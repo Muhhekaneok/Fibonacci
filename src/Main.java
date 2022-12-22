@@ -4,8 +4,9 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         printFibonacciNumber(10);
-        System.out.println();
+        System.out.println("\n---------------------------------");
         System.out.println(printFibonacciNumberByList(10));
+        System.out.println("\n---------------------------------");
     }
 
     public static void printFibonacciNumber(int digit) {
@@ -27,6 +28,8 @@ public class Main {
         for (int i = 2; i <= digit; i++) {
             arrList.add(arrList.get(i - 1) + arrList.get(i - 2));
         }
+        int result = arrList.get(arrList.size() - 1);
+        System.out.println("max value = " + result);
         return arrList;
     }
 }
