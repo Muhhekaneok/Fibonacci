@@ -1,6 +1,11 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
         printFibonacciNumber(10);
+        System.out.println();
+        System.out.println(printFibonacciNumberByList(10));
     }
 
     public static void printFibonacciNumber(int digit) {
@@ -13,5 +18,15 @@ public class Main {
             f0 = f1;
             f1 = fFibo;
         }
+    }
+
+    public static List<Integer> printFibonacciNumberByList(int digit) {
+        List<Integer> arrList = new ArrayList<>();
+        arrList.add(0);
+        arrList.add(1);
+        for (int i = 2; i <= digit; i++) {
+            arrList.add(arrList.get(i - 1) + arrList.get(i - 2));
+        }
+        return arrList;
     }
 }
