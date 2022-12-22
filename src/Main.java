@@ -7,7 +7,7 @@ public class Main {
         int f0 = 0;
         int f1 = 1;
         System.out.print(f0 + " " + f1 + " ");
-        for (int i = 0; i < digit; i++) {
+        for (int i = 2; i <= digit; i++) {
             int fFibo = f0 + f1;
             System.out.print(fFibo + " ");
             f0 = f1;
