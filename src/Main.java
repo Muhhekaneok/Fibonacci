@@ -1,13 +1,17 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class Main {
     public static void main(String[] args) {
-        printFibonacciNumber(10);
+        int digit = 10;
+        printFibonacciNumber(digit);
         System.out.println("\n---------------------------------");
-        System.out.println(printFibonacciNumberByList(10));
+        System.out.println(printFibonacciNumberByList(digit));
         System.out.println("\n---------------------------------");
-        System.out.println(printFibonacciElementByRecursion(10));
+        System.out.println(printFibonacciElementByRecursion(digit));
+        System.out.println("\n---------------------------------");
+        System.out.println(printFibonacciStream(digit));
     }
 
     public static void printFibonacciNumber(int digit) {
@@ -26,7 +30,7 @@ public class Main {
         List<Integer> arrList = new ArrayList<>();
         arrList.add(0);
         arrList.add(1);
-        for (int i = 2; i < digit; i++) {
+        for (int i = 2; i <= digit; i++) {
             arrList.add(arrList.get(i - 1) + arrList.get(i - 2));
         }
         int result = arrList.get(arrList.size() - 1);
@@ -37,5 +41,13 @@ public class Main {
     public static int printFibonacciElementByRecursion(int digit) {
         if (digit <= 1) return digit;
         return printFibonacciElementByRecursion(digit - 1) + printFibonacciElementByRecursion(digit - 2);
+    }
+
+    public static long printFibonacciStream(int element) {
+        var result = Stream.iterate(new long[]{0, 1}, arr -> new long[]{arr[1], arr[0] + arr[1]})
+                .limit(element)
+                .map(y -> y[1])
+                .max(Long::compareTo);
+        return result.orElseThrow(IllegalArgumentException::new);
     }
 }
