@@ -7,6 +7,7 @@ public class Main {
         System.out.println("\n---------------------------------");
         System.out.println(printFibonacciNumberByList(10));
         System.out.println("\n---------------------------------");
+        System.out.println(printFibonacciElementByRecursion(10));
     }
 
     public static void printFibonacciNumber(int digit) {
@@ -25,11 +26,16 @@ public class Main {
         List<Integer> arrList = new ArrayList<>();
         arrList.add(0);
         arrList.add(1);
-        for (int i = 2; i <= digit; i++) {
+        for (int i = 2; i < digit; i++) {
             arrList.add(arrList.get(i - 1) + arrList.get(i - 2));
         }
         int result = arrList.get(arrList.size() - 1);
         System.out.println("max value = " + result);
         return arrList;
+    }
+
+    public static int printFibonacciElementByRecursion(int digit) {
+        if (digit <= 1) return digit;
+        return printFibonacciElementByRecursion(digit - 1) + printFibonacciElementByRecursion(digit - 2);
     }
 }
